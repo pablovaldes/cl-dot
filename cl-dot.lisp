@@ -2,14 +2,16 @@
 
 (defvar *dot-path*
   #+(or win32 mswindows) "\"C:/Program Files/ATT/Graphviz/bin/dot.exe\""
-  #-(or win32 mswindows) "/usr/bin/dot"
+ ; #-(or win32 mswindows) "/usr/bin/dot"
+   #-(or win32 mswindows) (make-pathname :directory '(:absolute "usr" "bin" "dot") :name nil :type nil)
   "Path to the dot command")
 
 ;; the path to the neato executable (used for drawing undirected
 ;; graphs).
 (defvar *neato-path*
   #+(or win32 mswindows) "\"C:/Program Files/ATT/Graphviz/bin/neato.exe\""
-  #-(or win32 mswindows) "/usr/bin/neato"
+;  #-(or win32 mswindows) "/usr/bin/neato"
+   #-(or win32 mswindows) (make-pathname :directory '(:absolute "usr" "bin" "neato") :name nil :type nil)
   "Path to the neato command")
 
 (eval-when (:load-toplevel :execute)
